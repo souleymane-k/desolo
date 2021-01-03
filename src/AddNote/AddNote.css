@@ -1,0 +1,12 @@
+
+h2{
+    text-align: center;
+}
+
+.add-note-form{
+    text-align: center;
+}
+label, textarea{
+    margin:10px;
+}
+
