@@ -32,6 +32,16 @@ class App extends Component {
             notes: this.state.notes.filter(note => note.id !== noteId)
         });
     };
+    handleAddFolder = folder => {
+        this.setState({
+            folders: [...this.state.folders, folder]
+        });
+    }
+    handleAddNote = note => {
+        this.setState({
+            notes: [...this.state.notes, note]
+        })
+    }
 
     newMethod(error) {
         console.log(error);
@@ -75,7 +85,9 @@ class App extends Component {
         const value = {
             notes: this.state.notes,
             folders: this.state.folders,
-            deleteNote: this.handleDeleteNote
+            deleteNote: this.handleDeleteNote,
+            addFolder: this.handleAddFolder,
+            addNote: this.handleAddNote
         };
         console.log(this.state)
         return (
@@ -89,7 +101,9 @@ class App extends Component {
                             <FontAwesomeIcon icon="check-double" />
                         </h1>
                     </header>
-                    <main className="App__main">{this.renderMainRoutes()}</main>
+                    <main className="App__main">
+                        {this.renderMainRoutes()}
+                    </main>
                 </div>
             </ApiContext.Provider>
             </ErrorBoundry>

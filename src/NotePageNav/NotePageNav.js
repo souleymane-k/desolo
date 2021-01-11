@@ -23,12 +23,13 @@ export default class NotePageNav extends React.Component {
   render() {
     const { notes, folders, } = this.context
     const { noteId } = this.props.match.params
-    const note = findNote(notes, noteId) || {}
+    const note = findNote(notes, noteId) || {};
     const folder = findFolder(folders, note.folderId)
     return (
+      <ErrorBoundry>
       <div className='NotePageNav'>
-        <ErrorBoundry>
-        < AddFolder />
+        < AddFolder 
+        history={this.props.history}/>
         <CircleButton
           tag='button'
           role='link'
@@ -40,12 +41,12 @@ export default class NotePageNav extends React.Component {
           Back
         </CircleButton>
         {folder && (
-          <h3 className='NotePageNav__folder-name'>
+          <h3 className='NotePageNav__folder.name'>
             {folder.name}
           </h3>
         )}
-        </ErrorBoundry>
       </div>
+      </ErrorBoundry>
     )
   }
 }

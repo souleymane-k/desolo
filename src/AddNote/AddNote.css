@@ -10,3 +10,8 @@ label, textarea{
     margin:10px;
 }
 
+.form__button:disabled {
+    color: darkgray;
+    background-color: white;
+}
+

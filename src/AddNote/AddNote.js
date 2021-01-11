@@ -36,17 +36,14 @@ class AddNote extends Component {
       this.setState({ content: { value: content, touched: true } });
     }
 
-    updateFolderSelected= (folder) => {
+    updateFolderSelected = (folder) => {
        this.setState({ folderChoice: { value: folder, touched: true } });
     }
 
 
    handleSubmit = e => {
         e.preventDefault();
-        // get the form fields from the event
         const {name, content, folderChoice} = e.target;
-        
-
         const note = {
             name:name.value,
             content:content.value,
@@ -61,10 +58,10 @@ class AddNote extends Component {
             body: JSON.stringify(note),
             headers: {
              'content-type': 'application/json',
-              'Accept': 'application/json'
+             'Accept': 'application/json'
             }
         })
-          .then(async res => {
+          .then( res => {
             if (!res.ok) {
              
               return res.json().then(error => {
@@ -74,12 +71,18 @@ class AddNote extends Component {
             }
             return res.json()
           })
+          
+          //  .then(res => res.json())
+          // .then(data => {
+          //     this.context.addNote(data);
+          //     this.props.history.push("/");
+          // })
           .then(data => {
             name.value = '';
             content.value='';
             folderChoice.value='';
-            this.props.history.push('/')
             this.context.addNote(data);
+            this.props.history.push('/')
             
           })
           .catch(error => {
@@ -107,10 +110,8 @@ class AddNote extends Component {
 
     validateFolderSelected() {
         const folderChoice = this.state.foldervalue;
-        
         if (!folderChoice) {
-          
-            return "Please choose a folder to put your new note in";
+            return "Please  select a folder";
         } 
       }
   
@@ -118,14 +119,9 @@ class AddNote extends Component {
     render() {
         const nameError = this.validateName();
         const contentError = this.validateContent();
-  
-        
         const foldersObj = this.context.folders;
         const folderOptions = foldersObj.map((folder,i)=>
-              <option value={folder.id} key={i}>{folder.name}</option>);
-
-        
-      
+       <option value={folder.id} key={i}>{folder.name}</option>);
       return (
         <form className="add-note-form" onSubmit={e => this.handleSubmit(e)}>
           <ErrorBoundry>
@@ -156,30 +152,30 @@ class AddNote extends Component {
            {this.state.content.touched && <ValidationError message={contentError} />}
           </div>
           <div className="form-group">
-            <label htmlFor="folder-options"> Select Folder *</label>
+            <label htmlFor="folder-options">Select Folder *</label>
             <select
                 id="folderChoice"
                 name="folderChoice"
                 onChange={e => this.updateFolderSelected(e.target.value)}>
-                 <option value="">Select one...</option>
+                <option value="">Select one...</option>
                 {folderOptions}
-                ))
             </select>
            
           </div>
-         <div className="form__button__group">
-            
+         <div className="form__button__group"> 
             <button
               type="submit"
               className="form__button"
-              disabled={
-                this.validateName() ||
-                this.validateContent() 
-                // this.validateFolderSelected()        
-              }
+              // disabled={
+              //   this.validateName() ||
+              //   this.validateContent() ||
+              //   this.validateFolderSelected()        
+              // }
             >
-              Create Note
+              
+              Save Note
             </button>
+
             <button type="reset" className="form__button"
               onClick={this.handleClickCancel}
             >
@@ -189,6 +185,7 @@ class AddNote extends Component {
           </ErrorBoundry>
         </form>
       );
+    
     }
   }
 

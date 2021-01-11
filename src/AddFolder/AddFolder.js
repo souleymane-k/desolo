@@ -5,11 +5,10 @@ import {API_ENDPOINT} from '../config'
 import ApiContext from '../ApiContext';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry'
 
-
-
 class AddFolder extends Component {
     constructor(props) {
       super(props);
+      
       this.state = {
         name: {
           value: "",
@@ -28,7 +27,6 @@ class AddFolder extends Component {
 
    handleSubmit = e => {
          e.preventDefault();
-        // get the form fields from the event
         const {name} = e.target;
         const folder = {
             name:name.value,
@@ -40,35 +38,28 @@ class AddFolder extends Component {
             body: JSON.stringify(folder),
              headers: {
              'content-type': 'application/json',
-             //'Authorization': `Bearer ${config.API_KEY}`
             },
         })
           .then(async res => {
             if (!res.ok) {
-              // get the error message from the response,
               const error = await res.json();
-                // then throw it
                 throw error;
             }
             return res.json()
           })
           .then(data => {
             name.value = '';
-            this.props.history.push('/')
             this.context.addFolder(data);
+            console.log(this.props.history);
+            this.props.history.push('/')
+
           })
           .catch(error => {
             this.setState({ error })
           })
       }
-    //added for when added context
-    // handleClickCancel = () => {
-    //  this.props.history.push('/')
-    //  };
-
-
+  
     validateName = () => {
-      //  e.preventDefault();
       const name = this.state.name.value.trim();
       if (name.length === 0) {
         return "Name is required";
@@ -78,6 +69,7 @@ class AddFolder extends Component {
     }
   
     render() {
+
       const nameError = this.validateName();
       
       return (
@@ -98,24 +90,8 @@ class AddFolder extends Component {
               onChange={e => this.updateName(e.target.value)}
             />
             {this.state.name.touched && <ValidationError message={nameError} />}
-          </div>
-         <div className="form__button__group">
-            
-            <button
-              type="submit"
-              className="form__button"
-              disabled={
-                this.validateName()
-              }
-            >
-              Submit
-             </button>
-            {/* <button type="reset" className="form__button"
-              onClick={this.handleClickCancel}
-            >
-              Cancel
-            </button>  */}
-          </div>
+          <button type="submit">Save</button>
+                </div>
           </ErrorBoundry>
         </form>
       );
