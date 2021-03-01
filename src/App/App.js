@@ -21,9 +21,7 @@ class App extends Component {
     };
 
     componentDidMount() {
-        fetch(`${API_ENDPOINT}/notes`).then((response) => response.json()).then((json)=> this.setState({
-            notes: json
-        }))
+        fetch(`${API_ENDPOINT}/notes`).then((response) => response.json()).then((json)=> this.setState({notes: json}))
         fetch(`${API_ENDPOINT}/folders`).then((response) => response.json()).then((json)=> this.setState({folders:json}))
     }
 
