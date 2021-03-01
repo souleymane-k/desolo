@@ -76,10 +76,12 @@ class App extends Component {
                         component={NoteListMain}
                     />
                 ))}
-                <Route path="/note/:noteId" component={NotePageMain} />
+                <Route 
+                path="/note/:noteId" component={NotePageMain} />
             </>
         );
     }
+updateNote = () =>{};
 
     render() {
         const value = {
@@ -87,7 +89,8 @@ class App extends Component {
             folders: this.state.folders,
             deleteNote: this.handleDeleteNote,
             addFolder: this.handleAddFolder,
-            addNote: this.handleAddNote
+            addNote: this.handleAddNote,
+            updateNote: this.updateNote,
         };
         console.log(this.state)
         return (

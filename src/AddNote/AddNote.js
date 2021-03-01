@@ -72,11 +72,6 @@ class AddNote extends Component {
             return res.json()
           })
           
-          //  .then(res => res.json())
-          // .then(data => {
-          //     this.context.addNote(data);
-          //     this.props.history.push("/");
-          // })
           .then(data => {
             name.value = '';
             content.value='';
