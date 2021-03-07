@@ -33,7 +33,7 @@ class AddFolder extends Component {
           }
         this.setState({ error: null })
 
-        fetch(`${API_ENDPOINT}/folders/`,{
+        fetch(`${API_ENDPOINT}/folders`,{
             method: 'POST',
             body: JSON.stringify(folder),
              headers: {

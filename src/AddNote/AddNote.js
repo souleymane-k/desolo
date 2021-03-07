@@ -53,7 +53,7 @@ class AddNote extends Component {
        
       this.setState({ error: null })
 
-      fetch(`${API_ENDPOINT}/notes/`,{
+      fetch(`${API_ENDPOINT}/notes`,{
             method: 'POST',
             body: JSON.stringify(note),
             headers: {
