@@ -21,55 +21,12 @@ class App extends Component {
     };
 
     componentDidMount() {
-        // fetch(`${API_ENDPOINT}notes`).then((response) => response.json()).then((json)=> this.setState({notes: json}));
+        fetch(`${API_ENDPOINT}/notes`).then((response) => response.json()).then((json)=> this.setState({notes: json}))
         
-        // fetch(`${API_ENDPOINT}folders`).then((response) => response.json()).then((json)=> this.setState({folders:json}));
+        fetch(`${API_ENDPOINT}/folders`).then((response) => response.json()).then((json)=> this.setState({folders:json}))
    
-//componentDidMount() {
-    fetch(`${API_ENDPOINT}/notes`, {
-        method: 'GET',
-        headers: {
-          'content-type': 'application/json',
-          //'Authorization': `Bearer ${API_ENDPOINT}`
-        }
-      })
-        .then(res => {
-          if (!res.ok) {
-            return res.json().then(error => Promise.reject(error))
-          }
-          return res.json()
-        })
-        .then(this.setNotes)
-        .catch(error => {
-          console.error(error)
-          this.setState({ error })
-        })
 
-        fetch(`${API_ENDPOINT}/folders`, {
-            method: 'GET',
-            headers: {
-              'content-type': 'application/json',
-              //'Authorization': `Bearer ${API_ENDPOINT}`
-            }
-          })
-            .then(res => {
-              if (!res.ok) {
-                return res.json().then(error => Promise.reject(error))
-              }
-              return res.json()
-            })
-            .then(this.setFolders)
-            .catch(error => {
-              console.error(error)
-              this.setState({ error })
-            })
      }
-
-
-
-
-
-
 
 
     handleDeleteNote = noteId => {
@@ -137,7 +94,7 @@ updateNote = () =>{};
             addNote: this.handleAddNote,
             updateNote: this.updateNote,
         };
-        // console.log(this.state)
+        
         return (
             <ErrorBoundry>
             <ApiContext.Provider value={value}>
