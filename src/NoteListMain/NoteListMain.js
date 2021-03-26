@@ -5,16 +5,14 @@ import Note from '../Note/Note'
 import CircleButton from '../CircleButton/CircleButton'
 import ApiContext from '../ApiContext'
 import { getNotesForFolder } from '../notes-helpers'
-//import AddNote from '../AddNote/AddNote'
 import './NoteListMain.css'
 
 export default class NoteListMain extends React.Component {
   static defaultProps = {
-      match: {
+    match: {
       params: {}
     }
   }
-  
   static contextType = ApiContext
 
   render() {
@@ -45,7 +43,6 @@ export default class NoteListMain extends React.Component {
             <br />
             Note
           </CircleButton>
-          {/* <AddNote /> */}
         </div>
       </section>
     )

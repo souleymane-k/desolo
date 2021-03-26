@@ -7,7 +7,6 @@ import NoteListMain from '../NoteListMain/NoteListMain';
 import NotePageMain from '../NotePageMain/NotePageMain';
 import AddFolder from '../AddFolder/AddFolder'
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry'
-//import Note from './note/note'
 import AddNote from "../AddNote/AddNote"
 import ApiContext from '../ApiContext';
 import {API_ENDPOINT} from '../config';
@@ -79,7 +78,8 @@ class App extends Component {
                     />
                 ))}
                 <Route 
-                path="/note/:noteId" component={NotePageMain} />
+                path="/note/:noteId" 
+                component={NotePageMain} />
             </>
         );
     }

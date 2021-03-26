@@ -56,6 +56,7 @@ class AddNote extends Component {
       fetch(`${API_ENDPOINT}/notes`,{
             method: 'POST',
             body: JSON.stringify(note),
+            // mode: 'no-cors',
             headers: {
              'content-type': 'application/json',
              'Accept': 'application/json'

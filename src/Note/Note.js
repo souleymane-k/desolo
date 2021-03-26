@@ -16,9 +16,7 @@ export default class Note extends React.Component {
     e.preventDefault()
     const noteId = this.props.id
 
-    fetch(`${API_ENDPOINT}/notes/${noteId}`
-      //  `${config.API_ENDPOINT}/notes/${noteId}`
-         , {
+    fetch(`${API_ENDPOINT}/notes/${noteId}` , {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -72,6 +70,11 @@ export default class Note extends React.Component {
   }
 }
 Note.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
   onDeleteNote: PropTypes.func.isRequired
 }
+
+// Note.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   onDeleteNote: PropTypes.func.isRequired
+// }
