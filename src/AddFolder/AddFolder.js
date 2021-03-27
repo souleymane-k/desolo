@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ValidationError from "../ValidationError/ValidationError";
 import './AddFolder.css'
-import {API_ENDPOINT} from '../config'
+import config from '../config'
 import ApiContext from '../ApiContext';
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry'
 
@@ -33,7 +33,7 @@ class AddFolder extends Component {
           }
         this.setState({ error: null })
 
-        fetch(`${API_ENDPOINT}/folders`,{
+        fetch(`${config.API_ENDPOINT}/folders`,{
             method: 'POST',
             body: JSON.stringify(folder),
             // mode: 'no-cors',

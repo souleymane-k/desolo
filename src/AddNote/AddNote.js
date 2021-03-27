@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import ValidationError from "../ValidationError/ValidationError";
 import ApiContext from '../ApiContext'
 import './AddNote.css'
-import {API_ENDPOINT}  from '../config.js'
+import config  from '../config.js'
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry'
 
 
@@ -58,7 +58,7 @@ class AddNote extends Component {
        
       this.setState({ error: null })
 
-      fetch(`${API_ENDPOINT}/notes`,{
+      fetch(`${config.API_ENDPOINT}/notes`,{
             method: 'POST',
             body: JSON.stringify(note),
             // mode: 'no-cors',
