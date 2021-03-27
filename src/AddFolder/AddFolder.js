@@ -39,7 +39,8 @@ class AddFolder extends Component {
             // mode: 'no-cors',
              headers: {
              'content-type': 'application/json',
-             'Accept': 'application/json'
+             'Accept': 'application/json',
+             'authorization':`bearer ${config.API_KEY}`
             },
         })
           .then(async res => {
