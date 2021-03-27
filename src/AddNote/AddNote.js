@@ -171,7 +171,7 @@ class AddNote extends Component {
               className="form__input"
               name="modified"
               id="modified"
-              onChange={e => this.updateModified(e.target.value)}
+              onChange={this.updateModified}
             />
            {this.state.modified.touched && <ValidationError message={modifiedError} />}
          
