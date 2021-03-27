@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ApiContext from '../ApiContext'
-import {API_ENDPOINT} from '../config'
+import config from '../config'
 import './Note.css'
 
 export default class Note extends React.Component {
@@ -16,7 +16,7 @@ export default class Note extends React.Component {
     e.preventDefault()
     const noteId = this.props.id
 
-    fetch(`${API_ENDPOINT}/notes/${noteId}` , {
+    fetch(`${config.API_ENDPOINT}/notes/${noteId}` , {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
