@@ -17,7 +17,11 @@ class AddNote extends Component {
         content: {
             value: "",
             touched: false
-        },  
+        },
+        modified: {
+          value: "",
+          touched: false
+      }, 
         folderChoice:{
             value: "",
             touched:false  
@@ -43,9 +47,10 @@ class AddNote extends Component {
 
    handleSubmit = e => {
         e.preventDefault();
-        const {name, content, folderChoice} = e.target;
+        const {name, modified,content, folderChoice} = e.target;
         const note = {
             name:name.value,
+            modified:modified.value,
             content:content.value,
             folderId:folderChoice.value,
            
@@ -75,6 +80,7 @@ class AddNote extends Component {
           
           .then(data => {
             name.value = '';
+            modified.value='';
             content.value='';
             folderChoice.value='';
             this.context.addNote(data);
@@ -96,7 +102,16 @@ class AddNote extends Component {
         return "Name must be at least 3 characters long";
       }
     }
-
+   
+    validateModified(){
+      const modified = this.state.modified.value.trim();
+      if(modified.lengh ===0){
+        return 'Modified';
+      }else if(!modified ===Number ){
+        return "Modified must be a number"
+      }
+    }
+     
     validateContent() {
         const content = this.state.content.value.trim();
         if (content.length === 0) {
@@ -114,6 +129,7 @@ class AddNote extends Component {
     
     render() {
         const nameError = this.validateName();
+        const modifiedError = this.validateModified();
         const contentError = this.validateContent();
         const foldersObj = this.context.folders;
         const folderOptions = foldersObj.map((folder,i)=>
@@ -146,7 +162,21 @@ class AddNote extends Component {
               onChange={e => this.updateContent(e.target.value)}
             />
            {this.state.content.touched && <ValidationError message={contentError} />}
+         
           </div>
+          <div className="form-group">
+            <label htmlFor="modified">Modified *</label>
+            <textarea
+              type="date"
+              className="form__input"
+              name="modified"
+              id="modified"
+              onChange={e => this.updateModified(e.target.value)}
+            />
+           {this.state.modified.touched && <ValidationError message={modifiedError} />}
+         
+          </div>
+
           <div className="form-group">
             <label htmlFor="folder-options">Select Folder *</label>
             <select
