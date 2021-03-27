@@ -9,7 +9,7 @@ import AddFolder from '../AddFolder/AddFolder'
 import ErrorBoundry from '../ErrorBoundry/ErrorBoundry'
 import AddNote from "../AddNote/AddNote"
 import ApiContext from '../ApiContext';
-import {API_ENDPOINT} from '../config';
+import config from '../config';
 import './App.css';
 
 
@@ -20,9 +20,9 @@ class App extends Component {
     };
 
     componentDidMount() {
-        fetch(`${API_ENDPOINT}/notes`).then((response) => response.json()).then((json)=> this.setState({notes: json}))
+        fetch(`${config.API_ENDPOINT}/notes`).then((response) => response.json()).then((json)=> this.setState({notes: json}))
         
-        fetch(`${API_ENDPOINT}/folders`).then((response) => response.json()).then((json)=> this.setState({folders:json}))
+        fetch(`${config.API_ENDPOINT}/folders`).then((response) => response.json()).then((json)=> this.setState({folders:  json}))
    
 
      }
