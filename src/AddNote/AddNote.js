@@ -18,10 +18,10 @@ class AddNote extends Component {
             value: "",
             touched: false
         },
-        // modified: {
-        //   value: "",
-        //   touched: false
-      // }, 
+        modified: {
+          value: "",
+          touched: false
+      }, 
         folderChoice:{
             value: "",
             touched:false  
@@ -40,6 +40,10 @@ class AddNote extends Component {
       this.setState({ content: { value: content, touched: true } });
     }
 
+    updateModified = (modified) => {
+      this.setState({ modified: { value: modified, touched: true } });
+    }
+
     updateFolderSelected = (folder) => {
        this.setState({ folderChoice: { value: folder, touched: true } });
     }
@@ -47,11 +51,11 @@ class AddNote extends Component {
 
    handleSubmit = e => {
         e.preventDefault();
-        const {name,content, folderChoice} = e.target;
+        const {name, modified, content, folderChoice} = e.target;
         //modified
         const note = {
             name:name.value,
-            // modified:modified.value,
+            modified:modified.value,
             content:content.value,
             folderId:folderChoice.value,
            
@@ -82,7 +86,7 @@ class AddNote extends Component {
           
           .then(data => {
             name.value = '';
-            // modified.value='';
+            modified.value='';
             content.value='';
             folderChoice.value='';
             this.context.addNote(data);
@@ -105,14 +109,14 @@ class AddNote extends Component {
       }
     }
    
-    // validateModified(){
-    //   const modified = this.state.modified.value.trim();
-    //   if(modified.lengh ===0){
-    //     return 'Modified';
-    //   }else if(!modified ===Number ){
-    //     return "Modified must be a number"
-    //   }
-    // }
+    validateModified(){
+      const modified = this.state.modified.value.trim();
+      if(modified.lengh ===0){
+        return 'Modified';
+      }else if(!modified ===Number ){
+        return "Modified must be a number"
+      }
+    }
      
     validateContent() {
         const content = this.state.content.value.trim();
@@ -131,7 +135,7 @@ class AddNote extends Component {
     
     render() {
         const nameError = this.validateName();
-        // const modifiedError = this.validateModified();
+        const modifiedError = this.validateModified();
         const contentError = this.validateContent();
         const foldersObj = this.context.folders;
         const folderOptions = foldersObj.map((folder,i)=>
@@ -166,7 +170,7 @@ class AddNote extends Component {
            {this.state.content.touched && <ValidationError message={contentError} />}
          
           </div>
-          {/* <div className="form-group">
+          <div className="form-group">
             <label htmlFor="modified">Modified *</label>
             <textarea
               type="date"
@@ -177,7 +181,7 @@ class AddNote extends Component {
             />
            {this.state.modified.touched && <ValidationError message={modifiedError} />}
          
-          </div> */}
+          </div>
 
           <div className="form-group">
             <label htmlFor="folder-options">Select Folder *</label>
