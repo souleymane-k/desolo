@@ -9,6 +9,7 @@ h2{
 }
 label, textarea{
     margin:10px;
+    color:black;
 }
 
 .form__button:disabled {
