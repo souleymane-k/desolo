@@ -167,11 +167,10 @@ class AddNote extends Component {
             <select
                 id="folderChoice"
                 name="folderChoice"
-                onChange={this.updateFolderSelected}>
+                onChange={e =>this.updateFolderSelected(e.target.value)}>
                 <option value="">Select one...</option>
                 {folderOptions}
             </select>
-            {/* onChange={e => this.updateFolderSelected(e.target.value)} */}
           </div>
          <div className="form__button__group"> 
             <button
