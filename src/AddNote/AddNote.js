@@ -110,14 +110,6 @@ class AddNote extends Component {
       }
     }
    
-    // validateModified(){
-    //   const modified = this.state.modified.value.trim();
-    //   if(modified.lengh ===0){
-    //     return 'Modified';
-    //   }else if(!modified ===Number ){
-    //     return "Modified must be a number"
-    //   }
-    // }
      
     validateContent() {
         const content = this.state.content.value.trim();
@@ -136,7 +128,6 @@ class AddNote extends Component {
     
     render() {
         const nameError = this.validateName();
-        // const modifiedError = this.validateModified();
         const contentError = this.validateContent();
         const foldersObj = this.context.folders;
         const folderOptions = foldersObj.map((folder,i)=>
@@ -171,31 +162,16 @@ class AddNote extends Component {
            {this.state.content.touched && <ValidationError message={contentError} />}
          
           </div>
-          {/* <div className="form-group">
-          <label htmlFor="modified"></label>
-            <label htmlFor="modified">Modified *</label>
-            <p>2018-07-12T23:00:00.000Z</p> */}
-            {/* <textarea
-              type="date"
-              className="form__input"
-              name="modified"
-              id="modified"
-              onChange={this.updateModified}
-            /> */}
-           {/* {this.state.modified.touched && <ValidationError message={modifiedError} />} */}
-         
-          {/* </div> */}
-
           <div className="form-group">
             <label htmlFor="folder-options">Select Folder *</label>
             <select
                 id="folderChoice"
                 name="folderChoice"
-                onChange={e => this.updateFolderSelected(e.target.value)}>
+                onChange={this.updateFolderSelected}>
                 <option value="">Select one...</option>
                 {folderOptions}
             </select>
-           
+            {/* onChange={e => this.updateFolderSelected(e.target.value)} */}
           </div>
          <div className="form__button__group"> 
             <button
