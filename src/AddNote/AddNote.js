@@ -11,11 +11,11 @@ class AddNote extends Component {
       super(props);
       this.state = {
          name: {
-          value: "",
+          value:" ",
           touched: false
         }, 
         content: {
-            value: "",
+            value:" ",
             touched: false
         },
       //   modified: {
@@ -23,7 +23,7 @@ class AddNote extends Component {
       //     touched: false
       // }, 
         folderChoice:{
-            value: "",
+            value:" ",
             touched:false  
         }    ,
         error:null,  
@@ -150,8 +150,8 @@ class AddNote extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="content">Content *</label>
-            <input
-              type="text"
+            <textarea
+              type="textarea"
               className="form__input"
               name="content"
               id="content"
