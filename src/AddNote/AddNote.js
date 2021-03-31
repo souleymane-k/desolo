@@ -18,10 +18,10 @@ class AddNote extends Component {
             value: "",
             touched: false
         },
-        modified: {
-          value: "",
-          touched: false
-      }, 
+      //   modified: {
+      //     value: "",
+      //     touched: false
+      // }, 
         folderChoice:{
             value: "",
             touched:false  
@@ -85,7 +85,7 @@ class AddNote extends Component {
           
           .then(data => {
             name.value = '';
-            modified.value='';
+            // modified.value='';
             content.value='';
             folderChoice.value='';
             this.context.addNote(data);
@@ -108,14 +108,14 @@ class AddNote extends Component {
       }
     }
    
-    validateModified(){
-      const modified = this.state.modified.value.trim();
-      if(modified.lengh ===0){
-        return 'Modified';
-      }else if(!modified ===Number ){
-        return "Modified must be a number"
-      }
-    }
+    // validateModified(){
+    //   const modified = this.state.modified.value.trim();
+    //   if(modified.lengh ===0){
+    //     return 'Modified';
+    //   }else if(!modified ===Number ){
+    //     return "Modified must be a number"
+    //   }
+    // }
      
     validateContent() {
         const content = this.state.content.value.trim();
@@ -134,7 +134,7 @@ class AddNote extends Component {
     
     render() {
         const nameError = this.validateName();
-        const modifiedError = this.validateModified();
+        // const modifiedError = this.validateModified();
         const contentError = this.validateContent();
         const foldersObj = this.context.folders;
         const folderOptions = foldersObj.map((folder,i)=>
@@ -170,15 +170,17 @@ class AddNote extends Component {
          
           </div>
           <div className="form-group">
+          <label htmlFor="modified"></label>
             <label htmlFor="modified">Modified *</label>
-            <textarea
+            <p>2018-07-12T23:00:00.000Z</p>
+            {/* <textarea
               type="date"
               className="form__input"
               name="modified"
               id="modified"
               onChange={this.updateModified}
-            />
-           {this.state.modified.touched && <ValidationError message={modifiedError} />}
+            /> */}
+           {/* {this.state.modified.touched && <ValidationError message={modifiedError} />} */}
          
           </div>
 
