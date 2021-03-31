@@ -150,7 +150,7 @@ class AddNote extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="content">Content *</label>
-            <textarea
+            <input
               type="text"
               className="form__input"
               name="content"

@@ -62,7 +62,6 @@ export default class Note extends React.Component {
             {' '}
             
             <span className='Date'>
-              {/* {modified} 12/12/12 */}
               {modified}
             </span> 
           </div>
