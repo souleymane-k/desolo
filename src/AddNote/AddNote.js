@@ -52,8 +52,6 @@ class AddNote extends Component {
    handleSubmit = e => {
         e.preventDefault();
         const {name, content, folderChoice} = e.target;
-
-        
         // const {name, modified, content, folderChoice} = e.target;
         const note = {
             name:name.value,
