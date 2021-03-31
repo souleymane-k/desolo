@@ -40,9 +40,9 @@ class AddNote extends Component {
       this.setState({ content: { value: content, touched: true } });
     }
 
-    updateModified = (modified) => {
-      this.setState({ modified: { value: modified, touched: true } });
-    }
+    // updateModified = (modified) => {
+    //   this.setState({ modified: { value: modified, touched: true } });
+    // }
 
     updateFolderSelected = (folder) => {
        this.setState({ folderChoice: { value: folder, touched: true } });
@@ -59,8 +59,7 @@ class AddNote extends Component {
             name:name.value,
             // modified:modified.value,
             content:content.value,
-            folderId:folderChoice.value,
-           
+            folderid:folderChoice.value,
           }
        
       this.setState({ error: null })
@@ -172,10 +171,10 @@ class AddNote extends Component {
            {this.state.content.touched && <ValidationError message={contentError} />}
          
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
           <label htmlFor="modified"></label>
             <label htmlFor="modified">Modified *</label>
-            <p>2018-07-12T23:00:00.000Z</p>
+            <p>2018-07-12T23:00:00.000Z</p> */}
             {/* <textarea
               type="date"
               className="form__input"
@@ -185,7 +184,7 @@ class AddNote extends Component {
             /> */}
            {/* {this.state.modified.touched && <ValidationError message={modifiedError} />} */}
          
-          </div>
+          {/* </div> */}
 
           <div className="form-group">
             <label htmlFor="folder-options">Select Folder *</label>
