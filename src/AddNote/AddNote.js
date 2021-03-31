@@ -40,9 +40,9 @@ class AddNote extends Component {
       this.setState({ content: { value: content, touched: true } });
     }
 
-    // updateModified = (modified) => {
-    //   this.setState({ modified: { value: modified, touched: true } });
-    // }
+    updateModified = (modified) => {
+      this.setState({ modified: { value: modified, touched: true } });
+    }
 
     updateFolderSelected = (folder) => {
        this.setState({ folderChoice: { value: folder, touched: true } });
