@@ -151,7 +151,7 @@ class AddNote extends Component {
           <div className="form-group">
             <label htmlFor="content">Content *</label>
             <textarea
-              type="textarea"
+              type="text"
               className="form__input"
               name="content"
               id="content"

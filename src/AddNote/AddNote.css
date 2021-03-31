@@ -16,5 +16,7 @@ label, textarea{
     color: darkgray;
     background-color: white;
 }
-
+.form_input{
+    color:green;
+}
 
