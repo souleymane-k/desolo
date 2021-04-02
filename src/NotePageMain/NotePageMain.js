@@ -62,6 +62,7 @@ export default function NotePageMain(props) {
           <p key={i}>{para}</p>
         )}
       </div>
+      {props.note.content}
     </section>
   )
 }

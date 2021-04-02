@@ -10,7 +10,7 @@ import ErrorBoundry from '../ErrorBoundry/ErrorBoundry'
 import AddNote from "../AddNote/AddNote"
 import ApiContext from '../ApiContext';
 import config from '../config';
-import {findNote,getNotesForFolder,findFolder} from '../notes-helpers'
+import {findNote,getNotesForFolder} from '../notes-helpers'
 import './App.css';
 
 
