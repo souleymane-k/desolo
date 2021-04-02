@@ -10,6 +10,7 @@ import ErrorBoundry from '../ErrorBoundry/ErrorBoundry'
 import AddNote from "../AddNote/AddNote"
 import ApiContext from '../ApiContext';
 import config from '../config';
+import {findNote,getNotesForFolder} from '../notes-helpers'
 import './App.css';
 
 
@@ -67,19 +68,69 @@ class App extends Component {
     }
 
     renderMainRoutes() {
+        const { notes, folders } = this.state
         return (
             <>
                 {['/', '/folder/:folderId'].map(path => (
-                    <Route
-                        exact
-                        key={path}
-                        path={path}
-                        component={NoteListMain}
+
+                <Route
+                exact
+                key={path}
+                path={path}
+                render={routeProps => {
+                const { folderId } = routeProps.match.params
+                const notesForFolder = getNotesForFolder(notes, folderId)
+                return (
+                    <NoteListMain
+                    {...routeProps}
+                    notes={notesForFolder}
                     />
+              )
+            }}
+            />
+                              
+                    // <Route
+                    //     exact
+                    //     key={path}
+                    //     path={path}
+                    //     component={NoteListMain}
+                    // />
+
+
                 ))}
-                <Route 
+
+                {/* <Route 
                 path="/note/:noteId" 
-                component={NotePageMain} />
+                component={NotePageMain} /> */}
+
+          <Route
+          path='/note/:noteId'
+          render={routeProps => {
+            const { noteId } = routeProps.match.params
+            const note = findNote(notes, noteId)
+            return (
+              <NotePageMain
+                {...routeProps}
+                note={note}
+              />
+            )
+          }}
+        />
+         <Route
+          path='/add-folder'
+          component={AddFolder}
+        />
+        <Route
+          path='/add-note'
+          render={routeProps => {
+            return (
+              <AddNote
+                {...routeProps}
+                folders={folders}
+              />
+            )
+          }}
+        />
             </>
         );
     }
