@@ -39,7 +39,7 @@ export default class Note extends React.Component {
 
   render() {
     // const { name, id} = this.props
-    const {name, id, modified } = this.props
+    const {name, id, modified, content } = this.props
     return (
       <div className='Note'>
         <h2 className='Note__title'>
@@ -65,6 +65,7 @@ export default class Note extends React.Component {
             </span> 
           </div> 
          </div>
+         <div>{content}</div>
       </div>
 
     )

@@ -159,7 +159,7 @@ renderNavRoutes() {
           render={routeProps => {
             const { noteId } = routeProps.match.params
             const note = findNote(notes, noteId) || {}
-            const folder = findFolder(folders, note.folderId)
+            const folder = findFolder(folders, note.folderid)
             return (
               <NotePageNav
                 {...routeProps}
@@ -184,14 +184,14 @@ renderNavRoutes() {
     const { notes, folders } = this.state
     return (
       <>
-        {['/', '/folder/:folderId'].map(path =>
+        {['/', '/folder/:folderid'].map(path =>
           <Route
             exact
             key={path}
             path={path}
             render={routeProps => {
-              const { folderId } = routeProps.match.params
-              const notesForFolder = getNotesForFolder(notes, folderId)
+              const { folderid } = routeProps.match.params
+              const notesForFolder = getNotesForFolder(notes, folderid)
               return (
                 <NoteListMain
                   {...routeProps}
