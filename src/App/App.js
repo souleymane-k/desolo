@@ -72,7 +72,7 @@ class App extends Component {
         return (
             <>
                 {['/', '/folder/:folderId'].map(path => (
-
+                 //['/', '/folder/:folderId']/////
                 <Route
                 exact
                 key={path}

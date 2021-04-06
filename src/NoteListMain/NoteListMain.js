@@ -28,7 +28,7 @@ export default class NoteListMain extends React.Component {
                 id={note.id}
                 name={note.name}
                 // content={note.content}
-                // modified={note.modified}
+                modified={note.modified}
               />
             </li>
           )}
